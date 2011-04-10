@@ -102,6 +102,7 @@ MEDIA_BUNDLES = (
         'rest.css',
         'project-feed.css',
         'search-design.css',
+        'design.css'
     ),
 )
 

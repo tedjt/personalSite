@@ -61,7 +61,7 @@ def add_new_urls(sender, instance, **kwargs):
                 continue
             assert url not in add, (
                 'URL handler "%s" wants to add URL "%s" which was already '
-                'added by handler "%s".') % (handle.name, url, add[url])
+                'added by handler "%s".') % (handler.name, url, add[url])
             add[url] = handler.name
     for url in add:
         URLRoute(url=url, handler=add[url], target=unicode(instance.pk)).save()

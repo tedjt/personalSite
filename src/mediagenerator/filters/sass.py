@@ -63,7 +63,6 @@ class Sass(Filter):
                 run.append('--debug-info')
         run.extend(self.path_args)
         shell = sys.platform == 'win32'
-        print shell
         cmd = Popen(run, shell=shell, universal_newlines=True,
                     stdin=PIPE, stdout=PIPE, stderr=PIPE)
         output, error = cmd.communicate('@import %s' % self.main_module)

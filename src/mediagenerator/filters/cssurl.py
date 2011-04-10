@@ -32,7 +32,8 @@ class URLRewriter(object):
     def rewrite_urls(self, content):
         if not REWRITE_CSS_URLS:
             return content
-        return url_re.sub(self.fixurls, content)
+        return url_re.sub(self.fixurls,
+                           str(content))
 
     def fixurls(self, match):
         url = match.group(1)
