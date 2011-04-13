@@ -27,7 +27,7 @@ import os
 SITE_NAME = 'My site'
 SITE_DESCRIPTION = ''
 SITE_COPYRIGHT = ''
-DISQUS_SHORTNAME = ''
+DISQUS_SHORTNAME = 'tedtomlinsonssite'
 GOOGLE_ANALYTICS_ID = ''
 # Get the ID from the CSE "Basics" control panel ("Search engine unique ID")
 GOOGLE_CUSTOM_SEARCH_ID = ''
