@@ -44,6 +44,8 @@ class Page(BaseContent):
     url = models.CharField('URL', max_length=200)
     show_share_buttons = models.BooleanField(default=True,
         help_text='Show buttons for sharing this page on Twitter, Facebook, etc.')
+    raw_html = models.BooleanField(default=False,
+        help_text='Post this content as raw html instead of parsing with wiki syntax')
 
     def __unicode__(self):
         return u"%s -- %s" % (self.url, self.title)

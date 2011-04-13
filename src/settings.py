@@ -101,8 +101,7 @@ MEDIA_BUNDLES = (
         'design.sass',
         'rest.css',
         'project-feed.css',
-        'search-design.css',
-        'design.css'
+        'search-design.css'
     ),
 )
 
