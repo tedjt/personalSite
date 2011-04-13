@@ -26,5 +26,9 @@ handlers:
   static_dir: _generated_media/
   expiration: '365d'
 
+- url: /staticmedia
+  static_dir: staticmedia/
+  expiration: '365d'
+
 - url: /.*
   script: djangoappengine/main/main.py

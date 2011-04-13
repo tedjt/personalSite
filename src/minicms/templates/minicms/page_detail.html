@@ -8,6 +8,7 @@
 {% endblock %}
 
 {% block content %}
+{% if request.path != '/' %}<h1>{{ page.title }}</h1>{% endif %}
 
 {% if page.show_share_buttons %}
 {% with page.title|add:' | '|add:site_name as title %}
@@ -17,8 +18,10 @@
 
 {% if page.raw_html %}
 {{ page.content|safe }}
+This is safe content
 {% else %}
-{{ page.content }}
+{{ page.rendered_content }}
+this is rendered content
 {% endif %}
 
 {% if page.show_share_buttons %}

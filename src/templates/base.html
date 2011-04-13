@@ -40,23 +40,62 @@
   </head>
 
   <body>
-		<div id="contain">
-		  <div class="title">Ted Tomlinson</div>
-		
-			<div class="menu2">
-		        {% show_menu %}
-		  </div>
-		  <div class="content2">
-		    {% block content %}{% endblock %}
-		  </div>
-       <div id="sidebar" class="column">
-            {% block sidebar %}
-              {% show_block 'sidebar' %}
-            {% endblock %}
-       </div>
-		  <div class="footer2">Copyright Ted Tomlinson</div>
-		
-		</div>
+    <div id="header">
+      <a id="logo" href="/"><img alt="All Buttons Pressed" src="http://lh5.ggpht.com/_8v0Ka-uUQOY/S7yqfkqywAI/AAAAAAAAAFk/2yLtGysnSiU/logo%20%282%29.png" /></a>
+      {% if google_custom_search_id %}
+        <div id="search">
+          <div id="cse-search-form">Loading...</div>
+          <script src="http://www.google.com/jsapi" type="text/javascript"></script>
+          <script type="text/javascript">
+            google.load('search', '1', {language : 'en'});
+            google.setOnLoadCallback(function(){
+              var customSearchControl = new google.search.CustomSearchControl('{{ google_custom_search_id|escapejs }}');
+              customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+              var options = new google.search.DrawOptions();
+              options.setSearchFormRoot('cse-search-form');
+              customSearchControl.draw('cse', options);
+            }, true);
+          </script>
+        </div>
+      {% endif %}
+      <ul class="menu">
+        {% show_menu %}
+      </ul>
+    </div>
+
+    <div class="columns">
+      <div id="content" class="column">
+        {% block content-header %}
+          {% if error %}<div class="error">{{ error }}</div>{% endif %}
+          {% if info %}<div class="info">{{ info }}</div>{% endif %}
+          {% if messages %}
+            {% for message in messages %}
+              <div class="info">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endblock %}
+
+        <div id="cse" style="width:100%; display:inline;"></div>
+
+        {% block content %}{% endblock %}
+      </div>
+
+      <div id="sidebar" class="column">
+        {% block sidebar %}
+          {% show_block 'sidebar' %}
+        {% endblock %}
+      </div>
+    </div>
+
+    <div id="footer">
+      <p>
+        Copyright {% now "Y" %} {{ site_copyright }}<br />
+        Powered by <a href="http://www.allbuttonspressed.com/projects/django-nonrel">Django-nonrel</a>,
+        <a href="http://code.google.com/appengine/">App Engine</a>, and
+        <a href="http://www.allbuttonspressed.com/projects/allbuttonspressed">All Buttons Pressed</a>
+      </p>
+    </div>
+
     {% block js %}
     {% endblock %}
   </body>
