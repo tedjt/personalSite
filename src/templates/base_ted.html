@@ -1,0 +1,63 @@
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+{% load media cms blog %}
+<html xmlns="http://www.w3.org/1999/xhtml"
+    dir="{% if LANGUAGE_BIDI %}rtl{% else %}ltr{% endif %}"
+    xml:lang="{% firstof LANGUAGE_CODE 'en' %}"
+    lang="{% firstof LANGUAGE_CODE 'en' %}">
+  <head>
+    <title>{% block title %}{% endblock %} | {{ site_name }}</title>
+    {% block blogfeeds %}
+      {% blog_feeds %}
+    {% endblock %}
+    {% block css %}
+      {% if google_custom_search_id %}
+        <link rel="stylesheet" type="text/css" href="http://www.google.com/cse/style/look/greensky.css" />
+      {% endif %}
+      {% include_media 'main.css' %}
+    {% endblock %}
+
+    {% block preload_js %}
+      {% if google_analytics_id %}
+        <script type="text/javascript">
+        /* <![CDATA[ */
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', '{{ google_analytics_id|escapejs }}']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+        /* ]]> */
+        </script>
+      {% endif %}
+    {% endblock %}
+
+    {% block extra-head %}{% endblock %}
+  </head>
+
+  <body>
+		<div id="contain">
+		  <div class="title">Ted Tomlinson</div>
+		
+			<div class="menu2">
+		        {% show_menu %}
+		  </div>
+		  <div class="content2">
+		    {% block content %}{% endblock %}
+		  </div>
+       <div id="sidebar" class="column">
+            {% block sidebar %}
+              {% show_block 'sidebar' %}
+            {% endblock %}
+       </div>
+		  <div class="footer2">Copyright Ted Tomlinson</div>
+		
+		</div>
+    {% block js %}
+    {% endblock %}
+  </body>
+</html>
