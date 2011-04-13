@@ -36,4 +36,4 @@ class BlockAdmin(BaseAdmin):
     ordering = ('name',)
 
 admin.site.register(Page, PageAdmin, Media = CommonMedia)
-admin.site.register(Block, BlockAdmin, Media = CommonMedia)
+admin.site.register(Block, BlockAdmin)

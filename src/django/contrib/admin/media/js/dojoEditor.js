@@ -22,10 +22,11 @@ dojo.require("dojox.editor.plugins.ToolbarLineBreak");
 
 dojo.ready(function(){
   var textareas = dojo.query("textarea");
-  if(textareas && textareas.length){
+  var raw_html = dojo.query('#id_raw_html').attr('checked')[0];
+  if(textareas && textareas.length && raw_html){
     dojo.addClass(dojo.body(), "claro");
     textareas.instantiate(dijit.Editor, {
-      styleSheets: "/appmedia/style.css;/appmedia/blog/style.css",
+      //styleSheets: "/appmedia/style.css;/appmedia/blog/style.css",
       plugins: [
         "collapsibletoolbar",
         "fullscreen", "viewsource", "|",
