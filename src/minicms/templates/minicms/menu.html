@@ -1,3 +1,5 @@
 {% for item in menu %}
-    <a{% if item.active %} class="active-menu-item"{% endif %} href="{{ item.url }}">{{ item.title }}</a>{% if not forloop.last %}&nbsp;&nbsp;|&nbsp;&nbsp;{% endif%}
+  <li{% if item.active %} class="active-menu-item"{% endif %}>
+    <a href="{{ item.url }}">{{ item.title }}</a>
+  </li>
 {% endfor %}
