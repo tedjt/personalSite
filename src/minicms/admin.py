@@ -3,6 +3,14 @@ from django.contrib import admin
 from django.contrib.admin.widgets import AdminTextareaWidget
 from django.db import models
 
+class CommonMedia:
+    js = (
+    'https://ajax.googleapis.com/ajax/libs/dojo/1.6.0/dojo/dojo.xd.js',
+    '/media/admin/js/dojoEditor.js',
+  )
+    css = {
+    'all': ('/media/admin/css/editor.css',),
+    }
 # The default TextField doesn't have enough rows
 class UsableTextarea(AdminTextareaWidget):
     def __init__(self, attrs=None):
@@ -27,5 +35,5 @@ class BlockAdmin(BaseAdmin):
     search_fields = ('name',)
     ordering = ('name',)
 
-admin.site.register(Page, PageAdmin)
-admin.site.register(Block, BlockAdmin)
+admin.site.register(Page, PageAdmin, Media = CommonMedia)
+admin.site.register(Block, BlockAdmin, Media = CommonMedia)
