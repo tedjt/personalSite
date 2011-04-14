@@ -11,6 +11,12 @@ class CommonMedia:
     css = {
     'all': ('/media/admin/css/editor.css',),
     }
+class CommonMediaMce:
+    '/media/js/tiny_mce/tiny_mce.js','/media/js/tiny_mce/textareas.js'
+    js = (
+          '/media/admin/js/tiny_mce/tiny_mce.js',
+          '/media/admin/js/tinyMceEditor.js',
+          )
 # The default TextField doesn't have enough rows
 class UsableTextarea(AdminTextareaWidget):
     def __init__(self, attrs=None):
@@ -35,5 +41,5 @@ class BlockAdmin(BaseAdmin):
     search_fields = ('name',)
     ordering = ('name',)
 
-admin.site.register(Page, PageAdmin, Media = CommonMedia)
+admin.site.register(Page, PageAdmin, Media = CommonMediaMce)
 admin.site.register(Block, BlockAdmin)
